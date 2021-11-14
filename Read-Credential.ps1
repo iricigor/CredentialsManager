@@ -90,7 +90,7 @@ BEGIN {
             $Environment = (Compare-Object -ReferenceObject $UserNames -DifferenceObject $PassNames -ExcludeDifferent -IncludeEqual).InputObject
         }
         #>
-        $Environment = (Get-ChildItem -Path $Path -Filter '*.creds') -replace '.creds',''
+        $Environment = (Get-ChildItem -Path $Path -Filter '*.creds' -Name) -replace '.creds',''
 
         if (!$Environment) {
             Write-Warning -Message 'No stored credentials found. Try using Write-Credential, or Read-Credential with Path and ListAvailable parameters.'
